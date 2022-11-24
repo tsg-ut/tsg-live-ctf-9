@@ -8,6 +8,17 @@
 
 **Name**|**Genre**|**Point**|**Author**|**Solves**
 :------|:------|:------|:------|:------
+[RSA debug?]|crypto|100|@naan4UGen & @JP3BGY|22
+[RSA debug??]|crypto|200|@naan4UGen|21
+[Ta-Shi-Ma-Ku-Ri SAturday]|crypto|300|@naan4UGen|13
+[LoseLear]|pwn|100|@moratorium08|9
+[LooseLeaf]|pwn|200|@moratorium08|5
+[LoooseLeaf]|pwn|300|@moratorium08|1
+Welcome|misc|100|@|25
+[anger]|rev|200|@JP3BGY|2
+[anger-against-anger]|rev|400|@JP3BGY|0
+[Onomancy-Oriented Programming]|web|200|@hakatashi|8
+[Onomancy-Oriented Prophecy]|web|400|@hakatashi|1
 
 ## Scoreboard
 
