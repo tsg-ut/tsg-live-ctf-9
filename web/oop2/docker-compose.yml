@@ -1,0 +1,29 @@
+version: '2'
+services:
+  # We cannot use `app` as a hostname because of HSTS configuration of puppeteer.
+  server:
+    restart: always
+    image: node:19-alpine
+    volumes:
+      - ./dist/app:/app
+    working_dir: /app
+    command: sh -c "npm install && npm start"
+    ports:
+      - 56521:56521
+  redis:
+    image: redis
+    restart: always
+  worker:
+    build: ./dist/crawler/worker
+    depends_on:
+      - redis
+    restart: always
+    environment:
+      - DOMAIN=server
+      - PORT=56521
+      - FLAG=TSGLIVE{TSG_IS_NAMED_AFTER_TSUKURUNO_SUGOKU_GIRIGIRI._DID_YOU_KNOW?}
+  reporter:
+    build: ./dist/crawler/reporter
+    depends_on:
+      - redis
+    restart: always

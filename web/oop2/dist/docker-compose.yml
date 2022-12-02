@@ -1,0 +1,28 @@
+version: '2'
+services:
+  server:
+    restart: always
+    image: node:19-alpine
+    volumes:
+      - ./app:/app
+    working_dir: /app
+    command: sh -c "npm install && npm start"
+    ports:
+      - 56521:56521
+  redis:
+    image: redis
+    restart: always
+  worker:
+    build: ./crawler/worker
+    depends_on:
+      - redis
+    restart: always
+    environment:
+      - DOMAIN=server
+      - PORT=56521
+      - FLAG=DUMMY{DUMMY_FLAG}
+  reporter:
+    build: ./crawler/reporter
+    depends_on:
+      - redis
+    restart: always

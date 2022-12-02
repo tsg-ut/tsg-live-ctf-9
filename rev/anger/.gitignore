@@ -1,0 +1,7 @@
+*.o
+*.so
+/src/problem.c
+answer
+flag_len
+/src/encrypt
+/src/encrypt.c

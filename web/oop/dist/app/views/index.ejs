@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+		<title>Document</title>
+		<style>
+			.chunk {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				margin-bottom: 5rem;
+			}
+			.character {
+				display: flex;
+				align-items: flex-end;
+			}
+			.character .text {
+				font-size: 8rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<section class="section">
+				<div class="container">
+					<h1 class="title">かんたん姓名判断❤</h1>
+					<div class="field">
+						<div class="control">
+							<input class="input" type="text" placeholder="山田 太郎" v-model="name"/>
+						</div>
+					</div>
+					<h2 class="subtitle is-size-2">
+						{{name}}の姓名診断結果: {{totalStrokes}}画→{{luckiness}}
+						<button type="button" class="button is-primary" @click="share">
+							診断結果をシェアする
+						</button>
+					</h2>
+					<div class="chunks">
+						<div class="chunk" v-for="chunk in chunks">
+							<div class="character" v-for="character in chunk">
+								<div class="text">{{character}}</div>
+								<div class="strokes">{{strokes[character] ?? 0}}</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+
+		<script type="module" src="app.mjs"></script>
+
+		<% if (name) { %>
+			<div class="container">
+				<form action="/report" method="POST">
+					<button id="report" class="button is-danger" type="submit">この診断結果を通報する</button>
+					<input type="hidden" name="name" value="<%- name %>">
+				</form>
+			</div>
+		<% } %>
+	</body>
+</html>
