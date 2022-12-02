@@ -1,6 +1,6 @@
 # How to solve
 ## 1.unpack UPX
-In the binary, all "UPX" text is changed to "VPX" so undo it and unpack using (VPX2UPX.sh)[VPX2UPX.sh]
+In the binary, all "UPX" text is changed to "VPX" so undo it and unpack using [VPX2UPX.sh](VPX2UPX.sh)
 
 ## 2.overwrite anti-analysis program
 In the extracted binary, there are three anti-analysis program.
